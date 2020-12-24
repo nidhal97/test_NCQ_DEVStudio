@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package solution;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Nidhal
+ */
+public class Solution {
+    
+    
+    public static int result(int A[]) {
+        int s=0;
+        for (int i = 0; i < A.length; i++) {
+            if(Math.abs(s+A[i])<Math.abs(s-A[i]))
+                s+=A[i];
+            else 
+                s-=A[i];
+            //System.out.println("fibo de "+A[i]+"= "+fibo(A[i]));
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+        int N,temp;
+
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Donnez un entier N entre 0 et 20 000");
+            N= sc.nextInt();
+        } while ((N > 20000) || (0 > N));
+
+        int A[] = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            do {
+                System.out.println("Donnez A[" + i + "] (entre -100 et 100) ");
+                Scanner sc = new Scanner(System.in);
+                temp = sc.nextInt();
+            } while ((temp > 100) || (-100 > temp));
+            A[i] = temp;
+        }
+             
+        System.out.println(result(A));
+
+    }
+
+}
